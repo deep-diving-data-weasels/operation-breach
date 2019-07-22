@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
 import { Redirect } from 'react-router';
 import Aside from './Aside.js';
+import Header from './Header.js';
 import './../CSS/App.css';
 
 
@@ -15,20 +15,14 @@ export default class Login extends Component {
   loginClick(event){
     event.preventDefault();
     console.log(event.target["username"].value);
+    console.log(event.target["password"].value);
     this.props.history.push('/search');
-    console.log(event.target["username"].value);
     
   }
   render () {
     return (
       <Fragment>
-        <header>
-          <ul>
-            <Link to="/">Home</Link>
-            <Link to="/aboutus">AboutUs</Link>
-            <button>Sign Out</button>
-          </ul>
-        </header>
+       <Header />
         <main>
           <h1>Welcome: Operation Breach</h1>
           <p>Description of our services</p>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
+import Header from './Header.js';
 import Aside from './Aside.js';
 import './../CSS/App.css';
 
@@ -24,23 +24,17 @@ export default class Results extends Component {
   render () {
     return (
       <Fragment>
-        <header>
-          <ul>
-            <Link to="/">Home</Link>
-            <Link to="/aboutus">AboutUs</Link>
-            <button>Sign Out</button>
-          </ul>
-        </header>
+        <Header />
         <main>
           <section>
             <div>
-              <h3>${dummy.Name}</h3>
-              <p>${dummy.Title}</p>
-              <p>${dummy.Domain}</p>
-              <p>${dummy.BreachDate}</p>
-              <p>${dummy.PwnCount}</p>
-              <p>${dummy.Description}</p>
-              <p>${dummy.DataClasses}</p>
+              <h3>{dummy.Name}</h3>
+              <p>{dummy.Title}</p>
+              <p>{dummy.Domain}</p>
+              <p>{dummy.BreachDate}</p>
+              <p>{dummy.PwnCount}</p>
+              <p>{dummy.Description}</p>
+              <p>{dummy.DataClasses}</p>
             </div>
             <Aside />
           </section>

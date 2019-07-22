@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
+import Header from './Header.js';
 import Aside from './Aside.js';
 import './../CSS/App.css';
 
@@ -9,14 +9,7 @@ export default class AboutUs extends Component {
   render () {
     return (
       <Fragment>
-        <header>
-
-          <ul>
-            <Link to="/">Home</Link>
-            <Link to="/aboutus">AboutUs</Link>
-            <button>Sign Out</button>
-          </ul>
-        </header>
+        <Header />
         <main>
           <div>
             <div>
