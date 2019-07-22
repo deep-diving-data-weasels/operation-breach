@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import Aside from './components.Aside.js';
-import './App.css';
+import Aside from './components/Aside.js';
+// import './App.css';
 
 
 class App extends Component {
@@ -18,13 +18,13 @@ class App extends Component {
         <main>
           <h1>Welcom: Operation Breach</h1>
           <p>Description of our services</p>
-          <form>
+          {/* <form>
             <label for="username">Username: </label>
             <input name="username" type="text" placeholder="Username Here"></input>
             <label for="password">Password</label>
             <input name="password" type="password" placeholder="Password"></input>
             <input type="submit" value="submit">Log In</input>
-          </form>
+          </form> */}
           <Aside />
         </main>
         <footer>This is our footer</footer>
