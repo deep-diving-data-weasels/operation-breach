@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
@@ -27,5 +28,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "If disagreements arise during the production of Operation Breach, the following procedures will be followed in order to facilitate effective discourse and reach a commonly agreed upon solution in a timely manner.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deep-diving-data-weasels/operation-breach.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deep-diving-data-weasels/operation-breach/issues"
+  },
+  "homepage": "https://github.com/deep-diving-data-weasels/operation-breach#readme"
 }

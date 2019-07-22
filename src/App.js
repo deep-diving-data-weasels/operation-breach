@@ -1,34 +1,26 @@
 import React, { Component, Fragment } from 'react';
-import Aside from './components.Aside.js';
-import './App.css';
+import {BrowserRouter} from "react-router-dom";
+
+import LandingPage from './components/LandingPage.js';
+
+
+import './CSS/App.css';
 
 
 class App extends Component {
- 
+ constructor(props){
+   super(props);
+   this.state ={
+     page: 0,
+     username: ''
+   }
+ }
   render () {
     return (
-      <Fragment>
-        <header>
-          <ul>
-            <button>Home</button>
-            <button>About Us</button>
-            <button>Sign Out</button>
-          </ul>
-        </header>
-        <main>
-          <h1>Welcom: Operation Breach</h1>
-          <p>Description of our services</p>
-          <form>
-            <label for="username">Username: </label>
-            <input name="username" type="text" placeholder="Username Here"></input>
-            <label for="password">Password</label>
-            <input name="password" type="password" placeholder="Password"></input>
-            <input type="submit" value="submit">Log In</input>
-          </form>
-          <Aside />
-        </main>
-        <footer>This is our footer</footer>
-      </Fragment>
+      <BrowserRouter> 
+      <LandingPage />
+      </BrowserRouter>
+      
     );
   }
 }
