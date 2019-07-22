@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
+import Aside from './components.Aside.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+ 
+  render () {
+    return (
+      <Fragment>
+        <header>
+          <ul>
+            <button>Home</button>
+            <button>About Us</button>
+            <button>Sign Out</button>
+          </ul>
+        </header>
+        <main>
+          <h1>Welcom: Operation Breach</h1>
+          <p>Description of our services</p>
+          <form>
+            <label for="username">Username: </label>
+            <input name="username" type="text" placeholder="Username Here"></input>
+            <label for="password">Password</label>
+            <input name="password" type="password" placeholder="Password"></input>
+            <input type="submit" value="submit">Log In</input>
+          </form>
+          <Aside />
+        </main>
+        <footer>This is our footer</footer>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
