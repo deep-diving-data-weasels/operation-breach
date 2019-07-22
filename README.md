@@ -11,3 +11,5 @@ Poor performance by one member will be addressed as a group.  The intent of this
 
 ## Conflict Escalation
 Individuals will be aproached twice by the group for any one issue.  If that individual is disenclined to display any effort to improve the issue will be raised to the next higher level.  In this case it will be the class instructor.
+
+## more
