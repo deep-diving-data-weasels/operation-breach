@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {BrowserRouter} from "react-router-dom";
 
 import LandingPage from './components/LandingPage.js';
-import Aside from './components/Aside.js';
 
 import './CSS/App.css';
 
@@ -17,7 +16,6 @@ class App extends Component {
  }
   render () {
     return (
-
       <BrowserRouter> 
         <LandingPage />
       </BrowserRouter>

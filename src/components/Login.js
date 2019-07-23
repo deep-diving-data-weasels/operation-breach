@@ -1,24 +1,32 @@
 import React, { Component, Fragment } from 'react';
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
+
+// import Components
 import Aside from './Aside.js';
 import Header from './Header.js';
+
+// import style 
 import './../CSS/App.css';
 
+//const db = require('./../database.js');
 
 
+// Login class 
 export default class Login extends Component {
   constructor(props){
     super(props);
     this.state={isLogin: false};
     this.loginClick = this.loginClick.bind(this);
-  }
+  } // constructor end
+  
   loginClick(event){
     event.preventDefault();
     console.log(event.target["username"].value);
     console.log(event.target["password"].value);
+    // db.lookup({username: event.target["username"].value, password:event.target["password"].value});
     this.props.history.push('/search');
-    
-  }
+  } // loginClick end
+
   render () {
     return (
       <Fragment>
@@ -38,6 +46,6 @@ export default class Login extends Component {
         <footer>This is our footer</footer>
       </Fragment>
     );
-  }
-}
+  }// render end
+} // Login end
 

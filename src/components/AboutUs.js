@@ -14,25 +14,25 @@ export default class AboutUs extends Component {
           <div>
             <div>
               {/* <img></img> */}
-              <h3>Name</h3>
+              <h3>Jack Daniel Kinne</h3>
               <p>description</p>
             </div>
 
             <div>
               {/* <img></img> */}
-              <h3>Name</h3>
+              <h3>Chris Coulon</h3>
               <p>description</p>
             </div>
 
             <div>
               {/* <img></img> */}
-              <h3>Name</h3>
+              <h3>Kevin Couture</h3>
               <p>description</p>
             </div>
 
             <div>
               {/* <img></img> */}
-              <h3>Name</h3>
+              <h3>Promila Tamang</h3>
               <p>description</p>
             </div>
           </div>
