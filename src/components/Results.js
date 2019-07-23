@@ -10,9 +10,6 @@ import './../CSS/App.css';
 
 // Result class - used to build results
 class Result extends Component{ 
-  constructor(props){
-    super(props);
-  }// end constructor
 
   render() {
     return(
