@@ -1,23 +1,32 @@
 import React, { Component, Fragment } from 'react';
+import superagent from 'superagent';
+// import Component
 import Header from './Header.js';
 import Aside from './Aside.js';
+// import style
 import './../CSS/App.css';
 
 
-
+// Search class
 export default class Search extends Component {
-
+ 
   constructor(props){
     super(props);
     this.searchEmail = this.searchEmail.bind(this);
     // this.searchPassword = this.searchPassword.bind(this);
-  }
+  } // constructor end
 
   searchEmail(event) {
    event.preventDefault();
    console.log(event.target["email"].value);
+
+    const backEndURL = "http://localhost:3000/apiPwnd";
+    superagent.get(backEndURL).query({data: event.target["email"].value}).then(res => {
+      console.log(res);
+    })
+
    this.props.history.push('/results');
-  }
+  } // searchEmail end
 
   // searchPassword(event) {
 
@@ -50,6 +59,6 @@ export default class Search extends Component {
         <footer>This is our footer</footer>
       </Fragment>
     );
-  }
-}
+  } // render End
+} // Search class end
 

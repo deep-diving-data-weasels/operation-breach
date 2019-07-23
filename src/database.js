@@ -1,5 +1,6 @@
 const pg = require('pg');
-const dbURL = 'postgres://localhost:5432/users'; 
+const dbURL = 'postgres://localhost:5432/users';
+
 
 //set up database
 // const client = new pg.Client(dbURL);
