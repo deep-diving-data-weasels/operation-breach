@@ -39,15 +39,18 @@ function handleError (err, res) {
 }
 
 function getApiPwnd (request, response) {
+  console.log('request.query.data',request.query.data);
   // console.log('this is our request ', Object.keys(request.query)[0]);
-  const useremail = encodeURIComponent(Object.keys(request.query)[0]);
+  const useremail = encodeURIComponent(request.query.data);
   console.log('this is our encoded email: ', useremail);
   // const temp = `bravelemming%40gmail.com`;
-  const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${request.query}`;  
+  const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${request.query.data}`;
   return superagent.get(url)
+    // .set('User-Agent', 'operation-breach')
     .then(result => {
-      // console.log('these are our results: ', result);
+      console.log('these are our results: ', result);
       response.send(result);
+      console.log('hit the api return');
     })
     .catch(error => handleError(error));
 }
