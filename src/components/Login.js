@@ -5,7 +5,6 @@ import Header from './Header.js';
 import './../CSS/App.css';
 
 
-
 export default class Login extends Component {
   constructor(props){
     super(props);
@@ -17,8 +16,8 @@ export default class Login extends Component {
     console.log(event.target["username"].value);
     console.log(event.target["password"].value);
     this.props.history.push('/search');
-    
   }
+
   render () {
     return (
       <Fragment>
