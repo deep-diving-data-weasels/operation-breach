@@ -63,6 +63,7 @@ function getApiPwnd (request, response) {
   // console.log('this is our encoded email: ', useremail);
   // const temp = `bravelemming%40gmail.com`;
   const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
+  console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
     .then(result => {

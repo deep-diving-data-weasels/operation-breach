@@ -1,14 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
+import {withRouter} from 'react-router-dom';
 // import Component
 import Header from './Header.js';
 import Aside from './Aside.js';
 // import style
 import './../CSS/App.css';
 
+let data;
 
 // Search class
-export default class Search extends Component {
+export default  withRouter( class Search extends Component {
  
   constructor(props){
     super(props);
@@ -19,15 +21,17 @@ export default class Search extends Component {
   searchEmail(event) {
    event.preventDefault();
    console.log(event.target["email"].value);
-
+   
     const backEndURL = "http://localhost:3000/apiPwnd";
     superagent.get(backEndURL)
       .query({data: event.target["email"].value})
       .then(res => {
-      console.log(res);
-    })
+      data = res;
+      console.log(res.body);
+      this.props.callback({result: res.body});
+      this.props.history.push("/results");
+    });
 
-   this.props.history.push('/results');
   } // searchEmail end
 
   // searchPassword(event) {
@@ -62,5 +66,5 @@ export default class Search extends Component {
       </Fragment>
     );
   } // render End
-} // Search class end
+}) // Search class end
 

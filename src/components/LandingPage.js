@@ -10,13 +10,24 @@ import Results from './Results.js';
 
 
 export default class LandingPage extends Component {
+  constructor(props){
+   super(props);
+   this.data = [];
+   this.setData = this.setData.bind(this); 
+   this.state = {};
+  }
+  setData (data) {
+    this.setState(data);
+  }
  
   render () {
+    console.log(this.state);
     return (
       <Fragment>
         <Route exact path="/" component={Login} />
-        <Route exact path="/search" component={Search} />
-        <Route exact path='/results' component={Results} />
+        {/* <Route exact path="/search" component={Search} /> */}
+        <Route exact path="/search" component={() => < Search callback={this.setData} />} />
+        <Route path='/results' component={() => < Results apiResults={this.state.result} />} />
         <Route exact path="/aboutus" component={AboutUs} />
       </Fragment>
     );
