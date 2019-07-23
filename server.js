@@ -26,6 +26,7 @@ client.on('error', err => console.error(err));
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
 app.get('/apiSocial', getApiSocial);
+app.get('/pg', lookup);
 
 app.use('*', (request, response) => {
   response.send('you got to the wronge place');
@@ -50,7 +51,7 @@ function getApiSocial (request, response) {
     // .set('rejectUnauthorized', 'false')
     .then(result => {
       console.log('these are our social api results:--------------> ', result);
-      response.send(result);
+      response.send(result.body);
       console.log('hit the social api return');
     })
     .catch(error => handleError(error, response));
@@ -67,24 +68,26 @@ function getApiPwnd (request, response) {
     .set('User-Agent', 'operation-breach')
     .then(result => {
       // console.log('these are our results:----------------> ', result);
-      response.send(result);
+      response.send(result.body);
       // console.log('hit the api return');
     })
     .catch(error => handleError(error, response));
 }
 
 
-function lookup(userObj) {
-  const SQL = `SELECT * FROM users WHERE username=$1;`;
-  const ISQL = `INSTERT INTO users (username, password) VALUES ($1, $2);`;
-  const values = [userObj.username];
-  const iValues = [userObj.username, userObj.password];
+function lookup(request, response) {
+  const SQL = `SELECT username FROM users WHERE username=$1 VALUES ($1) `;
+
+  const ISQL = `INSERT INTO users (username, password) VALUES ($1, $2)`;
+
+  const values = [request.query.data.username];
+  const iValues = [request.query.data.username, request.query.data.password];
 
 
   client.query(SQL,values)
     .then(result => {
       if (result.rowCount >0 ){
-        console.log("username found ");
+        console.log("username found");
 
       }else{
         console.log("username not found");
