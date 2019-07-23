@@ -24,7 +24,7 @@ client.on('error', err => console.error(err));
 
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
-app.get('/apiSoical', getApiSocial);
+//app.get('/apiSoical', getApiSocial);
 
 app.use('*', (request, response) => {
   response.send('you got to the wronge place');
@@ -46,6 +46,7 @@ function getApiPwnd (request, response) {
   console.log('this is our encoded email: ', useremail);
   // const temp = `bravelemming%40gmail.com`;
   const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
+  console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
     .then(result => {
