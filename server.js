@@ -1,6 +1,7 @@
 'use strict';
 
 //Application Dependencies
+require('sqreen');
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
@@ -12,6 +13,7 @@ require('dotenv').config();
 //Application Setup
 const app = express();
 const PORT = process.env.PORT || 3000;
+const API_LITY = process.env.API_LITY;
 
 app.use(cors());
 
