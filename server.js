@@ -14,6 +14,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const API_LITY = process.env.API_LITY;
+const SOCIAL_API_KEY = process.env.SOCIAL_API_KEY;
 
 app.use(cors());
 
@@ -24,7 +25,7 @@ client.on('error', err => console.error(err));
 
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
-//app.get('/apiSoical', getApiSocial);
+app.get('/apiSocial', getApiSocial);
 
 app.use('*', (request, response) => {
   response.send('you got to the wronge place');
@@ -39,20 +40,36 @@ function handleError (err, res) {
   if (res) res.status(500).send('Not authorized for access');
 }
 
+//functions in routes
+function getApiSocial (request, response) {
+  console.log('request.query.data for social',request.query.data);
+  // const userQuery = encodeURIComponent(request.query.data);
+  // console.log('this is our encoded social name: ', userQuery);
+  const url = `http://api.social-searcher.com/v2/search?q="${request.query.data}"&key=${SOCIAL_API_KEY}`;
+  return superagent.get(url)
+    // .set('rejectUnauthorized', 'false')
+    .then(result => {
+      console.log('these are our social api results:--------------> ', result);
+      response.send(result);
+      console.log('hit the social api return');
+    })
+    .catch(error => handleError(error, response));
+}
+
 function getApiPwnd (request, response) {
-  console.log('request.query.data',request.query.data);
+  // console.log('request.query.data',request.query.data);
   // console.log('this is our request ', Object.keys(request.query)[0]);
   const useremail = encodeURIComponent(request.query.data);
-  console.log('this is our encoded email: ', useremail);
+  // console.log('this is our encoded email: ', useremail);
   // const temp = `bravelemming%40gmail.com`;
   const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
   console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
     .then(result => {
-      console.log('these are our results:----------------> ', result);
+      // console.log('these are our results:----------------> ', result);
       response.send(result);
-      console.log('hit the api return');
+      // console.log('hit the api return');
     })
     .catch(error => handleError(error, response));
 }
