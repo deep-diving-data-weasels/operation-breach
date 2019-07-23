@@ -3,6 +3,10 @@ import React, { Component, Fragment } from 'react';
 import Aside from './Aside.js';
 import Header from './Header.js';
 import './../CSS/App.css';
+import { lookup } from 'dns';
+
+const db = require('./../database.js');
+
 
 
 export default class Login extends Component {
@@ -15,6 +19,7 @@ export default class Login extends Component {
     event.preventDefault();
     console.log(event.target["username"].value);
     console.log(event.target["password"].value);
+    db.lookup({username: event.target["username"].value, password:event.target["password"].value});
     this.props.history.push('/search');
   }
 
