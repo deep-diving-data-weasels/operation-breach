@@ -21,7 +21,9 @@ export default class Search extends Component {
    console.log(event.target["email"].value);
 
     const backEndURL = "http://localhost:3000/apiPwnd";
-    superagent.get(backEndURL).query({data: event.target["email"].value}).then(res => {
+    superagent.get(backEndURL)
+      .query({data: event.target["email"].value})
+      .then(res => {
       console.log(res);
     })
 
