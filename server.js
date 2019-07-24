@@ -29,7 +29,7 @@ app.get('/apiSocial', getApiSocial);
 app.get('/pg', lookup);
 
 app.use('*', (request, response) => {
-  response.send('you got to the wronge place');
+  response.send('you got to the wrong place');
 })
 
 //Listen for Requests
