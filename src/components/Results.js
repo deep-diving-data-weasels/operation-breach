@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react';
 // Components
 import Header from './Header.js';
 import Aside from './Aside.js';
+import Footer from './Footer.js';
 
 // Styles
 import { strict } from 'assert';
@@ -68,7 +69,7 @@ export default class Results extends Component {
           </section>
           <Aside />
         </main>
-        <footer>This is our footer</footer>
+        <Footer />
       </Fragment>
     );
   }// end render

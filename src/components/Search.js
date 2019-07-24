@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 // import Component
 import Header from './Header.js';
 import Aside from './Aside.js';
+import Footer from './Footer.js';
 // import style
 
 let dataPwnd;
@@ -85,7 +86,7 @@ export default  withRouter( class Search extends Component {
 
           <Aside />
         </main>
-        <footer>This is our footer</footer>
+        <Footer />
       </Fragment>
     );
   } // render End

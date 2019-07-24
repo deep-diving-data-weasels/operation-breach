@@ -23,7 +23,6 @@ export default class LandingPage extends Component {
     return (
       <Fragment>
         <Route exact path="/" component={Login} />
-        {/* <Route exact path="/search" component={Search} /> */}
         <Route exact path="/search" component={() => < Search callback={this.setData} />} />
         <Route path='/results' component={() => < Results apiPwnd={this.state.pwndResult} apiSocial={this.state.socialResult}/>} />
         <Route exact path="/aboutus" component={AboutUs} />
