@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 // import Component
 import Header from './Header.js';
 import Aside from './Aside.js';
-mport Footer from './Footer.js';
+import Footer from './Footer.js';
 // import style
 import './../CSS/App.css';
 

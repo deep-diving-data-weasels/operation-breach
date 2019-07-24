@@ -5,7 +5,7 @@ import superagent from 'superagent';
 // import Components
 import Aside from './Aside.js';
 import Header from './Header.js';
-mport Footer from './Footer.js';
+import Footer from './Footer.js';
 
 // import style 
 import './../CSS/App.css';

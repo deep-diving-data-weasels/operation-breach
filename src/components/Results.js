@@ -4,7 +4,7 @@ import React, { Component, Fragment } from 'react';
 // Components
 import Header from './Header.js';
 import Aside from './Aside.js';
-mport Footer from './Footer.js';
+import Footer from './Footer.js';
 
 // Styles
 import './../CSS/App.css';
