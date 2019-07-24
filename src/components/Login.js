@@ -28,9 +28,10 @@ export default class Login extends Component {
     event.preventDefault();
     console.log(event.target['username'].value);
     console.log(event.target['password'].value);
-    const backEndURL = 'http://localhost:3000/pg';
+    const url = 'https://operation-breach.herokuapp.com';
+    const route = url + '/pg';
 
-    superagent.get(backEndURL)
+    superagent.get(route)
       .query({username: event.target['username'].value, password:event.target['password'].value})
       .then(res => {
       //TODO: check flag, if correct, move to search.
