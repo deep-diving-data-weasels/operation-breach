@@ -29,7 +29,7 @@ app.get('/apiSocial', getApiSocial);
 app.get('/pg', lookup);
 
 app.use('*', (request, response) => {
-  response.send('you got to the wronge place');
+  response.send('you got to the wrong place');
 })
 
 //Listen for Requests
@@ -46,7 +46,7 @@ function getApiSocial (request, response) {
   console.log('request.query.data for social',request.query.data);
   // const userQuery = encodeURIComponent(request.query.data);
   // console.log('this is our encoded social name: ', userQuery);
-  const url = `http://api.social-searcher.com/v2/search?q="${request.query.data}"&key=${SOCIAL_API_KEY}`;
+  const url = `http://api.social-searcher.com/v2/search?q="${request.query.data}"&key=51371630dfe1f661c34f53b0bdab0679`;
   return superagent.get(url)
     // .set('rejectUnauthorized', 'false')
     .then(result => {

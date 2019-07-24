@@ -7,13 +7,14 @@ import Aside from './Aside.js';
 
 // Styles
 import './../CSS/App.css';
+import { strict } from 'assert';
 
-// Result class - used to build results
-class Result extends Component{ 
+// PwndResult class - used to build results
+class PwndResult extends Component{ 
 
   render() {
     return(
-      <div class='result'>
+      <div class='PwndResult'>
         <h3>{this.props.resObj.Name}</h3>
         <p>{this.props.resObj.Title}</p>
         <p>{this.props.resObj.Domain}</p>
@@ -24,45 +25,30 @@ class Result extends Component{
       </div>
     );
   }// end render
-}// end Result
+}// end PwndResult
+
+// SocialResult class - used to build results
+class SocialResult extends Component{ 
+
+  render() {
+    return(
+      <div class='SocialResult'>
+        <h3>{this.props.resObj.user.name}</h3>
+        <img src = {this.props.resObj.image}></img>
+        <p>{this.props.resObj.posted}</p>
+        <p>{this.props.resObj.url}</p>
+        <p>{this.props.resObj.text}</p>
+      </div>
+    );
+  }// end render
+}// end SocialResult
 
 // Results - Componet to hold each result sub components.
 export default class Results extends Component {
  
-  constructor(props){
-    super(props);
-    this.state = {results: [{
-      Name: "Adobe",
-      Title: "Adobe",
-      Domain: "adobe.com",
-      BreachDate: "2013-10-04",
-      AddedDate: "2013-12-04T00:00Z",
-      ModifiedDate: "2013-12-04T00:00Z",
-      PwnCount: 152445165,
-      Description: "In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href=\"http://stricture-group.com/files/adobe-top100.txt\" target=\"_blank\" rel=\"noopener\">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href=\"http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html\" target=\"_blank\" rel=\"noopener\">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.",
-      DataClasses: ["Email addresses","Password hints","Passwords","Usernames"],
-      IsVerified: true,
-      IsSensitive: false,
-      IsRetired: false,
-      IsSpamList: false
-      },
-      {
-        Name: "Adobe2",
-        Title: "Adobe2",
-        Domain: "adobe2.com",
-        BreachDate: "2013-10-04",
-        AddedDate: "2013-12-04T00:00Z",
-        ModifiedDate: "2013-12-04T00:00Z",
-        PwnCount: 152445165,
-        Description: "In October 2013, 153 million Adobe accounts were breached with each containing an internal ID, username, email, <em>encrypted</em> password and a password hint in plain text. The password cryptography was poorly done and <a href=\"http://stricture-group.com/files/adobe-top100.txt\" target=\"_blank\" rel=\"noopener\">many were quickly resolved back to plain text</a>. The unencrypted hints also <a href=\"http://www.troyhunt.com/2013/11/adobe-credentials-and-serious.html\" target=\"_blank\" rel=\"noopener\">disclosed much about the passwords</a> adding further to the risk that hundreds of millions of Adobe customers already faced.",
-        DataClasses: ["Email addresses","Password hints","Passwords","Usernames"],
-        IsVerified: true,
-        IsSensitive: false,
-        IsRetired: false,
-        IsSpamList: false
-        }]
-    };
-  } // end constructor
+  // constructor(props){
+  //   super(props);
+  // } // end constructor
 
   render () {
     console.log('test 1', this.state);
@@ -72,8 +58,13 @@ export default class Results extends Component {
         <Header />
         <main>
           <section id="resultSection">
+            <h2>PWND Results</h2>
             {
-              this.state.results.map( (pwndObj,idx) => <Result resObj={pwndObj}/>)
+              this.props.apiPwnd.map( (pwndObj,idx) => <PwndResult resObj={pwndObj}/>)
+            }
+            <h2>Social Results</h2>
+            {
+              this.props.apiSocial.posts.map( (socialObj,idx) => <SocialResult resObj={socialObj}/>)
             }
           </section>
           <Aside />
