@@ -12,11 +12,11 @@ import Results from './Results.js';
 export default class LandingPage extends Component {
   constructor(props){
    super(props);
-   this.data = [];
    this.setData = this.setData.bind(this); 
    this.state = {};
   }
-  setData (data) {
+
+  setData(data) {
     this.setState(data);
   }
  

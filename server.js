@@ -13,7 +13,7 @@ require('dotenv').config();
 //Application Setup
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_LITY = process.env.API_LITY;
+// const API_LITY = process.env.API_LITY;
 const SOCIAL_API_KEY = process.env.SOCIAL_API_KEY;
 
 app.use(cors());
@@ -85,7 +85,7 @@ function lookup(userObj) {
   client.query(SQL,values)
     .then(result => {
       if (result.rowCount >0 ){
-        console.log("username found ");
+        console.log("username found");
 
       }else{
         console.log("username not found");
