@@ -1,8 +1,8 @@
+// React
 import React, { Component, Fragment } from 'react';
+// Components
 import Header from './Header.js';
 import Aside from './Aside.js';
-import './../CSS/App.css';
-
 
 export default class AboutUs extends Component {
  
@@ -40,7 +40,7 @@ export default class AboutUs extends Component {
 
           <Aside />
         </main>
-        <footer>This is our footer</footer>
+        <Footer />
       </Fragment>
     );
   }

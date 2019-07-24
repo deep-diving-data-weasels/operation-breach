@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import './../CSS/App.css';
 //TODO: linter error for why
 class Aside extends Component {
   render (){

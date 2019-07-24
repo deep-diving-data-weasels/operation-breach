@@ -3,8 +3,8 @@ import {BrowserRouter} from "react-router-dom";
 
 import LandingPage from './components/LandingPage.js';
 
-import './CSS/App.css';
-
+import './scss/App.css';
+// import './scss/core.scss';
 
 class App extends Component {
  constructor(props){
