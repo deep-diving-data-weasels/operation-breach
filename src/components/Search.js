@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom';
 import Header from './Header.js';
 import Aside from './Aside.js';
 // import style
-import './../CSS/App.css';
 
 let dataPwnd;
 let dataSocial;

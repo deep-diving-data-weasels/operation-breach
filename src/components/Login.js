@@ -7,7 +7,7 @@ import Aside from './Aside.js';
 import Header from './Header.js';
 
 // import style 
-import './../CSS/App.css';
+
 
 //Error Handler
 function handleError (err, res) {

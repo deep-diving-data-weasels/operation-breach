@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Route } from "react-router-dom";
 
-
-import './../CSS/App.css';
 import AboutUs from './AboutUs.js';
 import Login from './Login.js';
 import Search from './Search.js';

@@ -6,7 +6,6 @@ import Header from './Header.js';
 import Aside from './Aside.js';
 
 // Styles
-import './../CSS/App.css';
 import { strict } from 'assert';
 
 // PwndResult class - used to build results
