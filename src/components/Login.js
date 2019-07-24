@@ -5,6 +5,7 @@ import superagent from 'superagent';
 // import Components
 import Aside from './Aside.js';
 import Header from './Header.js';
+import Footer from './Footer.js';
 
 // import style 
 import './../CSS/App.css';
@@ -60,7 +61,7 @@ export default class Login extends Component {
           </form>
           <Aside />
         </main>
-        <footer>This is our footer</footer>
+        <Footer />
       </Fragment>
     );
   }// render end
