@@ -43,7 +43,7 @@ export default  withRouter( class Search extends Component {
       .then(res => {
         dataSocial = res.body;
       console.log(dataSocial);
-      this.props.callback({socailResult: dataSocial});
+      this.props.callback({socialResult: dataSocial});
       // this line must be call on the last API route 
       this.props.history.push("/results");
     });
