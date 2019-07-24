@@ -26,6 +26,7 @@ client.on('error', err => console.error(err));
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
 app.get('/apiSocial', getApiSocial);
+app.get('/pg', lookup);
 
 app.use('*', (request, response) => {
   response.send('you got to the wronge place');
@@ -50,7 +51,7 @@ function getApiSocial (request, response) {
     // .set('rejectUnauthorized', 'false')
     .then(result => {
       console.log('these are our social api results:--------------> ', result);
-      response.send(result);
+      response.send(result.body);
       console.log('hit the social api return');
     })
     .catch(error => handleError(error, response));
@@ -68,31 +69,41 @@ function getApiPwnd (request, response) {
     .set('User-Agent', 'operation-breach')
     .then(result => {
       // console.log('these are our results:----------------> ', result);
-      response.send(result);
+      response.send(result.body);
       // console.log('hit the api return');
     })
     .catch(error => handleError(error, response));
 }
 
 
-function lookup(userObj) {
-  const SQL = `SELECT * FROM users WHERE username=$1;`;
-  const ISQL = `INSTERT INTO users (username, password) VALUES ($1, $2);`;
-  const values = [userObj.username];
-  const iValues = [userObj.username, userObj.password];
+function lookup(request, response) {
+  const SQL = `SELECT username FROM users WHERE username=$1 AND password=$2;`;
+  const ISQL = `INSERT INTO users (username, password) VALUES ($1, $2)`;
 
+  const values = [request.query.username, request.query.password];
+  const ivalues = [request.query.username, request.query.password];
+  //TODO: maybe rename this data again.
+  console.log('values', values);
 
   client.query(SQL,values)
     .then(result => {
       if (result.rowCount >0 ){
-        console.log("username found");
+        console.log("username found, logging in.");
+        //TODO: Send user back info! 
+        response.send('exist');
 
       }else{
-        console.log("username not found");
-        client.query(ISQL, iValues);
-
+        client.query(ISQL, ivalues)
+          .then(resultI => {
+            console.log('you have been added to the database.')
+            response.send('add');
+          }
+          )
+          .catch(error => handleError(error, response));
       }
-    });
+      //TODO: add another condition for password/ user name mis match
+    })
+    .catch(error => handleError(error, response));
 }
 
 
