@@ -77,25 +77,33 @@ function getApiPwnd (request, response) {
 
 
 function lookup(request, response) {
-  const SQL = `SELECT username FROM users WHERE username=$1 VALUES ($1) `;
-
+  const SQL = `SELECT username FROM users WHERE username=$1 AND password=$2;`;
   const ISQL = `INSERT INTO users (username, password) VALUES ($1, $2)`;
 
-  const values = [request.query.data.username];
-  const iValues = [request.query.data.username, request.query.data.password];
-
+  const values = [request.query.username, request.query.password];
+  const ivalues = [request.query.username, request.query.password];
+  //TODO: maybe rename this data again.
+  console.log('values', values);
 
   client.query(SQL,values)
     .then(result => {
       if (result.rowCount >0 ){
-        console.log("username found");
+        console.log("username found, logging in.");
+        //TODO: Send user back info! 
+        response.send('exist');
 
       }else{
-        console.log("username not found");
-        client.query(ISQL, iValues);
-
+        client.query(ISQL, ivalues)
+          .then(resultI => {
+            console.log('you have been added to the database.')
+            response.send('add');
+          }
+          )
+          .catch(error => handleError(error, response));
       }
-    });
+      //TODO: add another condition for password/ user name mis match
+    })
+    .catch(error => handleError(error, response));
 }
 
 
