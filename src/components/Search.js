@@ -7,32 +7,56 @@ import Aside from './Aside.js';
 // import style
 import './../CSS/App.css';
 
-let data;
+let dataPwnd;
+let dataSocial;
 
 // Search class
 export default  withRouter( class Search extends Component {
  
   constructor(props){
     super(props);
-    this.searchEmail = this.searchEmail.bind(this);
+    this.searchPwnd = this.searchPwnd.bind(this);
+    this.searchSocial = this.searchSocial.bind(this);
+    this.submitHandle = this.submitHandle.bind(this);
     // this.searchPassword = this.searchPassword.bind(this);
   } // constructor end
 
-  searchEmail(event) {
-   event.preventDefault();
-   console.log(event.target["email"].value);
+  async searchPwnd(email) {
    //TODO: backURL - Deploy
     const backEndURL = "http://localhost:3000/apiPwnd";
     superagent.get(backEndURL)
-      .query({data: event.target["email"].value})
+      .query({data: email})
       .then(res => {
-      data = res;
-      console.log(res.body);
-      this.props.callback({result: res.body});
+        dataPwnd = res.body;
+      console.log(dataPwnd);
+      this.props.callback({pwndResult: dataPwnd});
+      
+    });
+
+  } // searchPwnd end
+
+  async searchSocial(email) {
+   //TODO: backURL - Deploy
+    const backEndURL = "http://localhost:3000/apiSocial";
+    superagent.get(backEndURL)
+      .query({data: email})
+      .then(res => {
+        dataSocial = res.body;
+      console.log(dataSocial);
+      this.props.callback({socialResult: dataSocial});
+      // this line must be call on the last API route 
       this.props.history.push("/results");
     });
 
-  } // searchEmail end
+  } // searchSocial end
+
+  async submitHandle(event){
+    event.preventDefault();
+    let email = event.target["email"].value;
+    await this.searchPwnd(email);
+    await this.searchSocial(email);
+    
+  }
 
   // searchPassword(event) {
 
@@ -46,7 +70,7 @@ export default  withRouter( class Search extends Component {
           <h1>Welcome: Operation Breach</h1>
           <p>Description of our services</p>
           <div>
-          <form onSubmit = {this.searchEmail}>
+          <form onSubmit = {this.submitHandle}>
             <label for="email">email: </label>
             <input name="email" type="text" placeholder="E-mail Address "></input>
             <button type="submit" value="submit">Search</button>
