@@ -13,7 +13,7 @@ require('dotenv').config();
 //Application Setup
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_LITY = process.env.API_LITY;
+// const API_LITY = process.env.API_LITY;
 const SOCIAL_API_KEY = process.env.SOCIAL_API_KEY;
 
 app.use(cors());
@@ -64,6 +64,7 @@ function getApiPwnd (request, response) {
   // console.log('this is our encoded email: ', useremail);
   // const temp = `bravelemming%40gmail.com`;
   const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
+  console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
     .then(result => {

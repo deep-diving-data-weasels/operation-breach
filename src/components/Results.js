@@ -65,6 +65,8 @@ export default class Results extends Component {
   } // end constructor
 
   render () {
+    console.log('test 1', this.state);
+    console.log('test 2', this.props);
     return (
       <Fragment>
         <Header />
