@@ -7,13 +7,8 @@ const superagent = require('superagent');
 const pg = require('pg');
 const cors = require ('cors');
 
-//added for heroku deployment
-const path = require('path');
-
 //Load environmental Variables from dovenv
 require('dotenv').config();
-
-
 
 //Application Setup
 const app = express();
@@ -28,25 +23,14 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.error(err));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
 app.get('/apiSocial', getApiSocial);
 app.get('/pg', lookup);
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
-
-// app.use('*', (request, response) => {
-//   response.send('you got to the wrong place');
-// })
-
-
+app.use('*', (request, response) => {
+  response.send('you got to the wrong place');
+})
 
 //Listen for Requests
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
@@ -60,11 +44,8 @@ function handleError (err, res) {
 //functions in routes
 function getApiSocial (request, response) {
   console.log('request.query.data for social',request.query.data);
-  // const userQuery = encodeURIComponent(request.query.data);
-  // console.log('this is our encoded social name: ', userQuery);
   const url = `http://api.social-searcher.com/v2/search?q="${request.query.data}"&key=${SOCIAL_API_KEY}`;
   return superagent.get(url)
-    // .set('rejectUnauthorized', 'false')
     .then(result => {
       console.log('these are our social api results:--------------> ', result);
       response.send(result.body);
@@ -74,23 +55,17 @@ function getApiSocial (request, response) {
 }
 
 function getApiPwnd (request, response) {
-  // console.log('request.query.data',request.query.data);
-  // console.log('this is our request ', Object.keys(request.query)[0]);
   const useremail = encodeURIComponent(request.query.data);
-  // console.log('this is our encoded email: ', useremail);
-  // const temp = `bravelemming%40gmail.com`;
   const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
   console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
     .then(result => {
-      // console.log('these are our results:----------------> ', result);
+      // console.log('these are our results:-----> ', result);
       response.send(result.body);
-      // console.log('hit the api return');
     })
     .catch(error => handleError(error, response));
 }
-
 
 function lookup(request, response) {
   const SQL = `SELECT username FROM users WHERE username=$1 AND password=$2;`;
@@ -98,7 +73,6 @@ function lookup(request, response) {
 
   const values = [request.query.username, request.query.password];
   const ivalues = [request.query.username, request.query.password];
-  //TODO: maybe rename this data again.
   console.log('values', values);
 
   client.query(SQL,values)
