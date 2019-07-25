@@ -2,9 +2,7 @@ import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import {withRouter} from 'react-router-dom';
 // import Component
-import Header from './Header.js';
 import Aside from './Aside.js';
-import Footer from './Footer.js';
 
 let dataPwnd;
 let dataSocial;
@@ -71,7 +69,7 @@ export default  withRouter( class Search extends Component {
       <Fragment>
         <main>
           <h1>Welcome: Operation Breach</h1>
-          <p>Description of our services</p>
+          <p>By entering in your email we can check for data breaches that the email was involved in and what type of data was at risk.</p>
           <div>
           <form onSubmit = {this.submitHandle}>
             <label for="email">email: </label>
@@ -84,8 +82,8 @@ export default  withRouter( class Search extends Component {
             <input type="submit" value="submit">Search</input>
           </form> */}
           </div>
-          <h3>placeholder</h3>
-          <p>we don't sell any kind of Password</p>
+          <h3>Our Promise</h3>
+          <p>We will not willingly share or distribute any data entered in the site.</p>
 
           <Aside />
         </main>

@@ -1,9 +1,7 @@
 // React
 import React, { Component, Fragment } from 'react';
 // Components
-import Header from './Header.js';
 import Aside from './Aside.js';
-import Footer from './Footer.js';
 
 export default class AboutUs extends Component {
  
