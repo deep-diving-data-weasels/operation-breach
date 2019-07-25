@@ -10,7 +10,6 @@ export default class AboutUs extends Component {
   render () {
     return (
       <Fragment>
-        <Header />
         <main>
           <div>
             <div>
@@ -41,7 +40,6 @@ export default class AboutUs extends Component {
 
           <Aside />
         </main>
-        <Footer />
       </Fragment>
     );
   }

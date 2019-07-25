@@ -7,8 +7,6 @@ import Aside from './Aside.js';
 import Header from './Header.js';
 import Footer from './Footer.js';
 
-// import style 
-
 
 //Error Handler
 function handleError (err, res) {
@@ -51,7 +49,6 @@ export default class Login extends Component {
   render () {
     return (
       <Fragment>
-       <Header />
         <main>
           <h1>Welcome: Operation Breach</h1>
           <p>Description of our services</p>
@@ -64,7 +61,6 @@ export default class Login extends Component {
           </form>
           <Aside />
         </main>
-        <Footer />
       </Fragment>
     );
   }// render end

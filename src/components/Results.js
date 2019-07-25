@@ -1,16 +1,25 @@
 // React
 import React, { Component, Fragment } from 'react';
+import { Markup } from 'interweave';
 
 // Components
 import Header from './Header.js';
 import Aside from './Aside.js';
 import Footer from './Footer.js';
 
-// Styles
-import { strict } from 'assert';
-
 // PwndResult class - used to build results
 class PwndResult extends Component{ 
+
+  constructor(props){
+    super(props);
+    this.htmlDecode = this.htmlDecode.bind(this);
+  }
+
+  htmlDecode(input){
+    var e = document.createElement('div');
+    e.innerHTML = input;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  }
 
   render() {
     return(
@@ -20,8 +29,8 @@ class PwndResult extends Component{
         <p>{this.props.resObj.Domain}</p>
         <p>{this.props.resObj.BreachDate}</p>
         <p>{this.props.resObj.PwnCount}</p>
-        <p>{this.props.resObj.Description}</p>
-        <p>{this.props.resObj.DataClasses}</p>
+        <Markup content={this.props.resObj.Description}></Markup>
+        <p>{this.props.resObj.DataClasses.join(', ')}</p>
       </div>
     );
   }// end render
@@ -36,7 +45,7 @@ class SocialResult extends Component{
         <h3>{this.props.resObj.user.name}</h3>
         <img src = {this.props.resObj.image}></img>
         <p>{this.props.resObj.posted}</p>
-        <p>{this.props.resObj.url}</p>
+        <p><a href={this.props.resObj.url}>{this.props.resObj.url}</a></p>
         <p>{this.props.resObj.text}</p>
       </div>
     );
@@ -55,7 +64,6 @@ export default class Results extends Component {
     console.log('test 2', this.props);
     return (
       <Fragment>
-        <Header />
         <main>
           <section id="resultSection">
             <h2>PWND Results</h2>
@@ -69,7 +77,6 @@ export default class Results extends Component {
           </section>
           <Aside />
         </main>
-        <Footer />
       </Fragment>
     );
   }// end render

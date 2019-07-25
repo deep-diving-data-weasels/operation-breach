@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom';
 import Header from './Header.js';
 import Aside from './Aside.js';
 import Footer from './Footer.js';
-// import style
 
 let dataPwnd;
 let dataSocial;
@@ -24,8 +23,8 @@ export default  withRouter( class Search extends Component {
   async searchPwnd(email) {
 
    //for local testing
-    // const backEndURL = "http://localhost:3000/apiPwnd";
-    const url = 'https://operation-breach.herokuapp.com/apiPwnd';
+    const url = "http://localhost:3000/apiPwnd";
+    // const url = 'https://operation-breach.herokuapp.com/apiPwnd';
 
     superagent.get(url)
       .query({data: email})
@@ -41,8 +40,8 @@ export default  withRouter( class Search extends Component {
   async searchSocial(email) {
 
    //for local testing
-    // const backEndURL = "http://localhost:3000/apiSocial";
-    const url = 'https://operation-breach.herokuapp.com/apiSocial';    
+    const url = "http://localhost:3000/apiSocial";
+    // const url = 'https://operation-breach.herokuapp.com/apiSocial';    
     superagent.get(url)
       .query({data: email})
       .then(res => {
@@ -70,7 +69,6 @@ export default  withRouter( class Search extends Component {
   render () {
     return (
       <Fragment>
-        <Header />
         <main>
           <h1>Welcome: Operation Breach</h1>
           <p>Description of our services</p>
@@ -91,7 +89,6 @@ export default  withRouter( class Search extends Component {
 
           <Aside />
         </main>
-        <Footer />
       </Fragment>
     );
   } // render End
