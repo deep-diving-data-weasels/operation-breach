@@ -15,6 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // const API_LITY = process.env.API_LITY;
 const SOCIAL_API_KEY = process.env.SOCIAL_API_KEY;
+const HIBP_API_KEY = process.env.HIBP_API_KEY;
 
 app.use(cors());
 
@@ -56,10 +57,11 @@ function getApiSocial (request, response) {
 
 function getApiPwnd (request, response) {
   const useremail = encodeURIComponent(request.query.data);
-  const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${useremail}`;
+  const url = `https://haveibeenpwned.com/api/v3/breachedaccount/${useremail}?truncateResponse=false`;
   console.log(url);
   return superagent.get(url)
     .set('User-Agent', 'operation-breach')
+    .set('hibp-api-key', `${HIBP_API_KEY}`)
     .then(result => {
       // console.log('these are our results:-----> ', result);
       response.send(result.body);
