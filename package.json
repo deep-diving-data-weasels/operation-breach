@@ -4,11 +4,16 @@
   "description": "If disagreements arise during the production of Operation Breach, the following procedures will be followed in order to facilitate effective discourse and reach a commonly agreed upon solution in a timely manner.",
   "main": "buildDB.js",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
     "node": "^12.7.0",
+    "pg": "^7.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.0.1",
-    "sqreen": "^1.31.0"
+    "sqreen": "^1.31.0",
+    "superagent": "^5.1.0"
   },
   "devDependencies": {},
   "scripts": {
