@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import {withRouter} from 'react-router-dom';
-import { Route } from "react-router-dom";
 // import Component
 import Header from './Header.js';
 import Aside from './Aside.js';
 import Footer from './Footer.js';
-import Results from './Results.js';
 // import style
 
 let dataPwnd;
@@ -30,8 +28,7 @@ export default  withRouter( class Search extends Component {
       .then(res => {
         dataPwnd = res.body;
       console.log(dataPwnd);
-      // this.props.callback({pwndResult: dataPwnd}); 
-      
+      this.props.callback({pwndResult: dataPwnd});     
     });
 
   } // searchPwnd end
@@ -44,24 +41,20 @@ export default  withRouter( class Search extends Component {
       .then(res => {
         dataSocial = res.body;
       console.log(dataSocial);
-      // this.props.callback({socialResult: dataSocial});
+      this.props.callback({socialResult: dataSocial});
       // this line must be call on the last API route 
     });
   } // searchSocial end
-
-  async stateTrigger(){
-    this.setState( {pwndResult: dataPwnd, socialResult: dataSocial});
-    this.props.history.push("/search/results");
-  }
 
   async submitHandle(event){
     event.preventDefault();
     let email = event.target["email"].value;
     await this.searchPwnd(email);
-    await this.searchSocial(email);
-    await this.stateTrigger();
+    await this.searchSocial(email).then( ()=>{
+      this.props.history.push("/results");
+    });
   }
- 
+
   render () {
     return (
       <Fragment>
@@ -78,8 +71,7 @@ export default  withRouter( class Search extends Component {
           </div>
           <h3>placeholder</h3>
           <p>we don't sell any kind of Password</p>
-          {/* trial for heroku dep */}
-          <Route path='/search/results' component={() => < Results apiPwnd={this.state.pwndResult|| []} apiSocial={this.state.socialResult || {'posts': []}}/>} />
+
           <Aside />
         </main>
         <Footer />
