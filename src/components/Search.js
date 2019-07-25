@@ -53,6 +53,7 @@ export default  withRouter( class Search extends Component {
   } // searchSocial end
 
   async submitHandle(event){
+    //Stretch: Button effect or loading bar.
     event.preventDefault();
     let email = event.target["email"].value;
     await this.searchPwnd(email);
@@ -69,7 +70,7 @@ export default  withRouter( class Search extends Component {
       <Fragment>
         <main>
           <h1>Welcome: Operation Breach</h1>
-          <p>By entering in your email we can check for data breaches that the email was involved in and what type of data was at risk.</p>
+          <p>By entering in your email we can check for data breaches that the email was involved in and what type of data was at risk. (Results may take a few moments to process.)</p>
           <div>
           <form onSubmit = {this.submitHandle}>
             <label for="email">email: </label>
