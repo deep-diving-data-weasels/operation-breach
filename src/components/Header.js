@@ -8,9 +8,11 @@ export default class header extends Component {
       <Fragment>
         <header>
           <ul>
+            <img src="image/logo.jpg" /> 
             <Link to="/">Home</Link><br/>
             <Link to="/aboutus">AboutUs</Link><br/>
             <Link to="/">Sign Out</Link><br/>
+
           </ul>
         </header>
       </Fragment>   
