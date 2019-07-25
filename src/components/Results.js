@@ -12,13 +12,6 @@ class PwndResult extends Component{
 
   constructor(props){
     super(props);
-    this.htmlDecode = this.htmlDecode.bind(this);
-  }
-
-  htmlDecode(input){
-    var e = document.createElement('div');
-    e.innerHTML = input;
-    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
   }
 
   render() {
