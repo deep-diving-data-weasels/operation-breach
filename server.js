@@ -7,8 +7,13 @@ const superagent = require('superagent');
 const pg = require('pg');
 const cors = require ('cors');
 
+//added for heroku deployment
+const path = require('path');
+
 //Load environmental Variables from dovenv
 require('dotenv').config();
+
+
 
 //Application Setup
 const app = express();
@@ -23,14 +28,25 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.error(err));
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 //API Routes
 app.get('/apiPwnd', getApiPwnd);
 app.get('/apiSocial', getApiSocial);
 app.get('/pg', lookup);
 
-app.use('*', (request, response) => {
-  response.send('you got to the wrong place');
-})
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
+// app.use('*', (request, response) => {
+//   response.send('you got to the wrong place');
+// })
+
+
 
 //Listen for Requests
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
