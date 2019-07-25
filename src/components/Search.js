@@ -2,10 +2,7 @@ import React, { Component, Fragment } from 'react';
 import superagent from 'superagent';
 import {withRouter} from 'react-router-dom';
 // import Component
-import Header from './Header.js';
 import Aside from './Aside.js';
-import Footer from './Footer.js';
-// import style
 
 let dataPwnd;
 let dataSocial;
@@ -24,8 +21,8 @@ export default  withRouter( class Search extends Component {
   async searchPwnd(email) {
 
    //for local testing
-    // const backEndURL = "http://localhost:3000/apiPwnd";
-    const url = 'https://operation-breach.herokuapp.com/apiPwnd';
+    const url = "http://localhost:3000/apiPwnd";
+    // const url = 'https://operation-breach.herokuapp.com/apiPwnd';
 
     superagent.get(url)
       .query({data: email})
@@ -41,8 +38,8 @@ export default  withRouter( class Search extends Component {
   async searchSocial(email) {
 
    //for local testing
-    // const backEndURL = "http://localhost:3000/apiSocial";
-    const url = 'https://operation-breach.herokuapp.com/apiSocial';    
+    const url = "http://localhost:3000/apiSocial";
+    // const url = 'https://operation-breach.herokuapp.com/apiSocial';    
     superagent.get(url)
       .query({data: email})
       .then(res => {
@@ -56,6 +53,7 @@ export default  withRouter( class Search extends Component {
   } // searchSocial end
 
   async submitHandle(event){
+    //Stretch: Button effect or loading bar.
     event.preventDefault();
     let email = event.target["email"].value;
     await this.searchPwnd(email);
@@ -70,10 +68,9 @@ export default  withRouter( class Search extends Component {
   render () {
     return (
       <Fragment>
-        <Header />
         <main>
           <h1>Welcome: Operation Breach</h1>
-          <p>Description of our services</p>
+          <p>By entering in your email we can check for data breaches that the email was involved in and what type of data was at risk. (Results may take a few moments to process.)</p>
           <div>
           <form onSubmit = {this.submitHandle}>
             <label for="email">email: </label>
@@ -86,12 +83,11 @@ export default  withRouter( class Search extends Component {
             <input type="submit" value="submit">Search</input>
           </form> */}
           </div>
-          <h3>placeholder</h3>
-          <p>we don't sell any kind of Password</p>
+          <h3>Our Promise</h3>
+          <p>We will not willingly share or distribute any data entered in the site.</p>
 
           <Aside />
         </main>
-        <Footer />
       </Fragment>
     );
   } // render End

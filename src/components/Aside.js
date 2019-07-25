@@ -6,10 +6,12 @@ class Aside extends Component {
       <Fragment>
         <aside>
           <ul>
-            <p>TBD</p>
-            <p>TBD</p>
-            <p>TBD</p>
-            <p>TBD</p>
+            <div class ="logo">
+            <p><img src="image/github.png" /> </p>
+            <p><img src="image/linkedIn.png" /> </p>
+            </div>
+
+            
           </ul>
         </aside>
       </Fragment>
