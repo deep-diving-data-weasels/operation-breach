@@ -5,7 +5,7 @@ import { Route } from "react-router-dom";
 import AboutUs from './AboutUs.js';
 import Login from './Login.js';
 import Search from './Search.js';
-import Results from './Results.js';
+// import Results from './Results.js';
 
 export default class LandingPage extends Component {
   constructor(props){
