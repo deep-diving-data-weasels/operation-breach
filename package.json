@@ -2,7 +2,7 @@
   "name": "op-breach",
   "version": "1.0.0",
   "description": "If disagreements arise during the production of Operation Breach, the following procedures will be followed in order to facilitate effective discourse and reach a commonly agreed upon solution in a timely manner.",
-  "main": "buildDB.js",
+  "main": "server.js",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
