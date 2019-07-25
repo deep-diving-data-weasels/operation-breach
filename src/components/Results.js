@@ -3,9 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { Markup } from 'interweave';
 
 // Components
-import Header from './Header.js';
 import Aside from './Aside.js';
-import Footer from './Footer.js';
 
 // PwndResult class - used to build results
 class PwndResult extends Component{ 

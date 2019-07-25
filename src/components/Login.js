@@ -4,8 +4,6 @@ import superagent from 'superagent';
 
 // import Components
 import Aside from './Aside.js';
-import Header from './Header.js';
-import Footer from './Footer.js';
 
 
 //Error Handler
@@ -40,18 +38,13 @@ export default class Login extends Component {
       //TODO: if it's not correct, prompt and do nothing.
       }).catch(e=>console.error(e));
   } // loginClick end
-  
-  /*
-    
-
-  */
 
   render () {
     return (
       <Fragment>
         <main>
           <h1>Welcome: Operation Breach</h1>
-          <p>Description of our services</p>
+          <p>This site will utilize mutliple APIs that check if your data has been put at risk. (Do not use your regular password and username!)</p>
           <form onSubmit={this.loginClick}>
             <label for="username" >Username: </label>
             <input name="username" id="username" type="text" placeholder="Username Here"></input>
