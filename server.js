@@ -82,13 +82,13 @@ function lookup(request, response) {
       if (result.rowCount >0 ){
         console.log("username found, logging in.");
         //TODO: Send user back info! 
-        result.send('exists');
+        result.send('exist');
 
       }else{
         client.query(ISQL, ivalues)
           .then(resultI => {
             console.log('you have been added to the database.')
-            result.send('added');
+            resultI.send('add');
           }
           )
           .catch(error => handleError(error, response));
