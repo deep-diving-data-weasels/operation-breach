@@ -77,16 +77,18 @@ function lookup(request, response) {
   const ivalues = [request.query.username, request.query.password];
   console.log('values', values);
 
-  client.query(SQL,values)
+  client.query(SQL,values,response)
     .then(result => {
       if (result.rowCount >0 ){
         console.log('username found, logging in.');
         //TODO: Send user back info! 
+        response.send(202);
 
-      }else{
-        client.query(ISQL, ivalues)
+      }else{  
+        client.query(ISQL, ivalues, response)
           .then(resultI => {
             console.log('you have been added to the database.');
+            response.send(201);
           }
           )
           .catch(error => handleError(error, response));
